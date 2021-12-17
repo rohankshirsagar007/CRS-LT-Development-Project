@@ -2,7 +2,7 @@ package com.lt.crs.business;
 
 import com.lt.crs.bean.Reportcard;;
 
-public class ReportCardOperations {
+public class ReportCardService {
 	Reportcard rc[] = new Reportcard[1];
 public void displayResult(){
 	rc[0] = new Reportcard();

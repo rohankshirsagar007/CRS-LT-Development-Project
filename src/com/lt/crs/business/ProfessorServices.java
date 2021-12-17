@@ -15,7 +15,7 @@ import com.lt.crs.dao.ProfessorDao;
 import com.lt.crs.dao.ProfessorDaoImpl;
 
 
-public class ProfessorOperation implements ProfessorInterface{
+public class ProfessorServices implements ProfessorInterface{
 List<Student> st;
 Set<Course> set;
 Professor pr = new Professor();

@@ -1,6 +1,6 @@
 package com.lt.crs.business;
 
-public class PaymentOperations extends CourseOperations{
+public class PaymentServices extends CourseServices{
 public void calculateBill(){
 	int fee = 300;
 	int count = 1;

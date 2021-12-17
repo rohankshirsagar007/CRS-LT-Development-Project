@@ -2,7 +2,7 @@ package com.lt.crs.business;
 
 import com.lt.crs.bean.Course;
 
-public class CourseOperations extends StudentOperations {
+public class CourseServices extends StudentServices {
 	Course courses[] = new Course[2];
 	public void addCourse(){
 		courses[0] = new Course();

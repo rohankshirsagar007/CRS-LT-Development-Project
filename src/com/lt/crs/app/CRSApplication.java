@@ -13,7 +13,7 @@ public class CRSApplication {
 		System.out.println("\n 1. Login  \n 2. Student Registration \n 3. Update Password \n 4. Exit  \n Enter your Choice : ");
 		int n,id = 0;
 		String username=null;
-		ProfessorOperation pr=new ProfessorOperation();
+		ProfessorServices pr=new ProfessorServices();
 	    Scanner sc = new Scanner(System.in);
 	    n = sc.nextInt();
 	    switch (n) {
@@ -41,31 +41,16 @@ public class CRSApplication {
 	    	            break;
 	    	            
 	        	    case 2: 
-	        	    	System.out.println("Enter Your Credentials for Professor Login : ");
-	    	            System.out.println("Login ID : ");
+	        	    	System.out.println("Hi , Please Enter Below details : ");
+	    	            System.out.println("Student ID : ");
 	    	            id=sc.nextInt();
-	    	            System.out.println("Password : ");
+	    	            System.out.println("Student Name : ");
 	    	            username=sc.next();
-	    	            System.out.println(" "+username);
-	    	            if(pr.isLogedIn(id,username))
-	    	            {
-	    	            System.out.println("LogIn Successful");
-	    	            while(true)
-	    	            {
-		    	            System.out.println("1. View Enroll Student \n2. Add Grade for Students \n3. Exit");
-		    	            id=sc.nextInt();
-		    	            pca=new ProfessorCRSApp();
-		    	            
-		    	            pca.professorOperations(id);
-	    	            }
-	    	            
-	    	            
-	    	            }
-	    	            else
-	    	            {
-	    	            	System.out.println("invalid credentials");
-	    	            }
-	    	            
+	    	            System.out.println("Student Semester : ");
+	    	            int semester = sc.nextInt();
+	    	            System.out.println("Student Password : ");
+	    	            String password = sc.next();
+	    	            	
 	    	            break;
 	    	            
 	        	    case 3: 
@@ -87,8 +72,18 @@ public class CRSApplication {
 	    	            break;
 	        	}
 	        	break;
-	        case 2: System.out.println("Exited successfully "); 
-	        		System.exit(0); 
+	        case 2: 
+	        	System.out.println("Hi , Please Enter Below details : ");
+	            System.out.println("Student ID : ");
+	            id=sc.nextInt();
+	            System.out.println("Student Name : ");
+	            username=sc.next();
+	            System.out.println("Student Semester : ");
+	            int semester = sc.nextInt();
+	            System.out.println("Student Password : ");
+	            String password = sc.next();
+	            
+	            break;
 	        default:
 	            System.out.println("you enter wrong choice !!!! ");
 	            break;

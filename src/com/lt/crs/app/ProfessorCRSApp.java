@@ -2,12 +2,12 @@ package com.lt.crs.app;
 
 import java.util.Scanner;
 
-import com.lt.crs.business.ProfessorOperation;
+import com.lt.crs.business.ProfessorServices;
 
 public class ProfessorCRSApp {
 
 	public void professorOperations(int option) {
-		ProfessorOperation pr = new ProfessorOperation();
+		ProfessorServices pr = new ProfessorServices();
 		int id = 0;
 		Scanner sc = new Scanner(System.in);
 		
