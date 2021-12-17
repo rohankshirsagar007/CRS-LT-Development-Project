@@ -10,74 +10,85 @@ import com.lt.crs.utils.Dbconnection;
 public class ProfessorDaoImpl implements ProfessorDao {
 
 	PreparedStatement stmt;
+	PreparedStatement stmt1;
+	PreparedStatement stmt2;
+
 	ResultSet rs;
+	ResultSet rs1;
+	ResultSet rs2;
 	Connection conn;
-	
-	public void viewEnrollStudents() {
-		
-		
-		 // Let us select all the records and display them.
-		 conn=Dbconnection.getConnection();
-	      String sql = "SELECT * FROM student_course where professorID=?";
-	   try {
-		stmt= conn.prepareStatement(sql);
-		stmt.setInt(1, 123);
-	} catch (SQLException e1) {
-		// TODO Auto-generated catch block
-		e1.printStackTrace();
-	}
-	  
-	  try {
-		rs= stmt.executeQuery();
-	} catch (SQLException e1) {
-		// TODO Auto-generated catch block
-		e1.printStackTrace();
-	}
 
-	      //STEP 5: Extract data from result set
-	      try {
-			while(rs.next()){
-			     //Retrieve by column name
-			     int studentID = rs.getInt(1);
-			     int professorID = rs.getInt(2);
-			     int courseID = rs.getInt(3);
+	public void viewEnrollStudents(int id) {
+		// Let us select all the records and display them.
+		conn = Dbconnection.getConnection();
+		System.out.println("in pfdao");
+		String student_course_professor = "SELECT * FROM student_course where professorID=?";
+		String show_student_details_query = "Select * from student where studentId=?";
+		String show_course_details_query = "select * from course where courseId=?";
+		try {
+			stmt = conn.prepareStatement(student_course_professor);
+			stmt.setInt(1, id);
 
-			     //Display values
-			     System.out.print("\n Student ID: " + studentID);
-			     System.out.print("\n professor ID: " + professorID);
-			     System.out.print("\n Course ID: " + courseID+"\n \n ");
-			     
-			  }
+			rs = stmt.executeQuery();
+
+			System.out.print("\n Student ID" + " " + "student name"
+					+ " " + "Course Id" + " " + "course name");
+			while (rs.next()) {
+				// Retrieve by column name
+				stmt1 = conn.prepareStatement(show_student_details_query);
+				stmt1.setInt(1, rs.getInt(1));
+				rs1 = stmt1.executeQuery();
+
+				stmt2 = conn.prepareStatement(show_course_details_query);
+				stmt2.setInt(1, rs.getInt(3));
+				rs2 = stmt2.executeQuery();
+				while (rs1.next()) {
+
+					// Display values
+					
+					System.out.print("\n " + rs1.getInt(1) + " "
+							+ rs1.getString(2));
+
+				}
+				while (rs2.next()) {
+
+					// Display values
+					
+					System.out.print(" " + rs2.getInt(1) + " "
+							+ rs2.getString(2)+"\n ");
+
+				}
+
+			}
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-	      //STEP 6: Clean-up environment
-	     // rs.close();
-	      try {
+		// STEP 6: Clean-up environment
+		// rs.close();
+		try {
 			stmt.close();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	      try {
+			stmt1.close();
 			conn.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	  
-		
+
 	}
 
 	public void addGrade(int studentId, char grade, int courseID) {
 		// TODO Auto-generated method stub
-		
-	}
 
+	}
+	
 	public boolean isLogedIn(int id, String username) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	public static void printStudentDetails(int id)
+	{
+		
 	}
 
 }

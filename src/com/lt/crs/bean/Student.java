@@ -6,6 +6,13 @@ public class Student {
 private int studentID;
 private String studentName;
 private int studentsemester;
+private int studentpassword;
+public int getStudentpassword() {
+	return studentpassword;
+}
+public void setStudentpassword(int studentpassword) {
+	this.studentpassword = studentpassword;
+}
 private Set<Course> course;
 
 

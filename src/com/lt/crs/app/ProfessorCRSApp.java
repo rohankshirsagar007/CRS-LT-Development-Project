@@ -6,16 +6,16 @@ import com.lt.crs.business.ProfessorServices;
 
 public class ProfessorCRSApp {
 
-	public void professorOperations(int option) {
+	public void professorOperations(int option, int id2) {
 		ProfessorServices pr = new ProfessorServices();
 		int id = 0;
 		Scanner sc = new Scanner(System.in);
 		
 			switch (option) {
 			case 1:
-				System.out
-						.println("Please see the Below Enroll student Details");
-				pr.viewEnrollStudents();
+				
+				System.out.println("Please see the Below Enroll student Details");
+				pr.viewEnrollStudents(id2);
 
 				break;
 			case 2:
@@ -26,7 +26,7 @@ public class ProfessorCRSApp {
 				int courseId = sc.nextInt();
 				System.out.println("Enter Grade  : ");
 				char grade = sc.next().charAt(0);
-				pr.addGrade(id, grade, courseId);
+				pr.addGrade(id, grade, courseId,id2);
 
 				break;
 

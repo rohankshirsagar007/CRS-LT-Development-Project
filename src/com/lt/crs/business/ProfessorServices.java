@@ -20,68 +20,17 @@ List<Student> st;
 Set<Course> set;
 Professor pr = new Professor();
 ProfessorDao pd;
-	public boolean isLogedIn(int id,String username)
-	{
 		
-		if(username.equals("Arturo") && id == 123)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-		
-	}
-	
-	public void viewEnrollStudents()
+	public void viewEnrollStudents(int id2)
 	{
 		pd = new ProfessorDaoImpl();
-		pd.viewEnrollStudents();
+		pd.viewEnrollStudents(id2);
 		
-	/*	Course course= new  Course();
-		course.setCourseID(7);
-		course.setCourseName("Java");
-	set=new HashSet<Course>();
-	set.add(course);		
-			
-		Student student= new Student();
-		student.setStudentID(11);
-		student.setStudentName("Abhi");
-		student.setStudentsemester(1);
-		student.setCourse(set);
-		st=new ArrayList<Student>();
-		st.add(student);
-		student = new Student();
-		student.setStudentID(12);
-		student.setStudentName("Diva");
-		student.setStudentsemester(1);
-		student.setCourse(set);
-		st.add(student);
-		
-		for(Student student1:st)
-		{
-			System.out.println("Details of Enrolled Students : "+student1.getStudentID()+" "+student1.getStudentName()+" "+student1.getStudentsemester()+" "+student1.getCourse());
-			
-		}
-	}
-	
-	public void addGrade(int studentId, char grade,int courseID)
-	{
-	
-		Grade g = new Grade();
-		g.setCourseId(courseID);
-		g.setStudentId(studentId);
-		g.setGrade(grade);
-		
-		System.out.println("Grade hase been set");
-		
-		
-	}*/
 	}
 
-	public void addGrade(int studentId, char grade, int courseID) {
-		// TODO Auto-generated method stub
+	public void addGrade(int studentId, char grade, int courseID, int professorId) {
+		pd=new ProfessorDaoImpl();
+		pd.addGrade(studentId, grade, courseID);
 		
 	}
 	
