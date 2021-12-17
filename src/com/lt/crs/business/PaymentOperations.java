@@ -1,8 +1,6 @@
 package com.lt.crs.business;
 
-import com.lt.crs.bean.Course;
-
-public class BillingOperations extends CourseOperations{
+public class PaymentOperations extends CourseOperations{
 public void calculateBill(){
 	int fee = 300;
 	int count = 1;

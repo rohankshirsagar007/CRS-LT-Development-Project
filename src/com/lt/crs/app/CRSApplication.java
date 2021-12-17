@@ -2,14 +2,15 @@ package com.lt.crs.app;
  import java.util.Scanner;
 
 import com.lt.crs.business.*;
-public class CRSApp {
+public class CRSApplication {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ProfessorCRSApp pca=null;
 		while(true)
 		{
-		System.out.println("Welcome to CRS application : \n 1. Login  \n 2. Exit  \n Enter your Choice : ");
+		System.out.println("******************\t Welcome to CRS application \t *****************");
+		System.out.println("\n 1. Login  \n 2. Student Registration \n 3. Update Password \n 4. Exit  \n Enter your Choice : ");
 		int n,id = 0;
 		String username=null;
 		ProfessorOperation pr=new ProfessorOperation();
@@ -17,12 +18,12 @@ public class CRSApp {
 	    n = sc.nextInt();
 	    switch (n) {
 	        case 1:
-	        	System.out.println("\n 1. Student \n 2. Professor \n 3.Admin \n Enter your choice : ");
+	        	System.out.println("\n 1. Student \n 2. Professor \n 3. Admin \n Enter your choice : ");
 	        	int choice=sc.nextInt();
 	        	switch(choice)
 	        	{
 	        	    case 1: 
-	        	    	System.out.println("Enter Your Credentials for Student Login: ");
+	        	    	System.out.println("Enter Your Credentials for Student Login : ");
 	    	            System.out.println("Login ID : ");
 	    	            id=sc.nextInt();
 	    	            System.out.println("Password : ");
@@ -51,7 +52,7 @@ public class CRSApp {
 	    	            System.out.println("LogIn Successful");
 	    	            while(true)
 	    	            {
-		    	            System.out.println("1. View Enroll Student \n 2.Add Grade for Students \n 3.Exit");
+		    	            System.out.println("1. View Enroll Student \n2. Add Grade for Students \n3. Exit");
 		    	            id=sc.nextInt();
 		    	            pca=new ProfessorCRSApp();
 		    	            

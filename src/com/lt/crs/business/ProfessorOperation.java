@@ -11,11 +11,15 @@ import com.lt.crs.bean.Grade;
 import com.lt.crs.bean.Professor;
 import com.lt.crs.bean.Student;
 //import com.lt.crs.bean.course;
+import com.lt.crs.dao.ProfessorDao;
+import com.lt.crs.dao.ProfessorDaoImpl;
+
 
 public class ProfessorOperation implements ProfessorInterface{
 List<Student> st;
 Set<Course> set;
 Professor pr = new Professor();
+ProfessorDao pd;
 	public boolean isLogedIn(int id,String username)
 	{
 		
@@ -32,8 +36,10 @@ Professor pr = new Professor();
 	
 	public void viewEnrollStudents()
 	{
+		pd = new ProfessorDaoImpl();
+		pd.viewEnrollStudents();
 		
-		Course course= new  Course();
+	/*	Course course= new  Course();
 		course.setCourseID(7);
 		course.setCourseName("Java");
 	set=new HashSet<Course>();
@@ -55,7 +61,7 @@ Professor pr = new Professor();
 		
 		for(Student student1:st)
 		{
-			System.out.println("Details of Enrolled Students "+student1.getStudentID()+" "+student1.getStudentName()+" "+student1.getStudentsemester()+" "+student1.getCourse());
+			System.out.println("Details of Enrolled Students : "+student1.getStudentID()+" "+student1.getStudentName()+" "+student1.getStudentsemester()+" "+student1.getCourse());
 			
 		}
 	}
@@ -70,6 +76,12 @@ Professor pr = new Professor();
 		
 		System.out.println("Grade hase been set");
 		
+		
+	}*/
+	}
+
+	public void addGrade(int studentId, char grade, int courseID) {
+		// TODO Auto-generated method stub
 		
 	}
 	

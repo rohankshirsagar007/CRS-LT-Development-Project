@@ -1,6 +1,6 @@
 package com.lt.crs.bean;
 
-public class Billing {
+public class Payment {
 	
 private boolean paymentStatus;
 private int billNo;
