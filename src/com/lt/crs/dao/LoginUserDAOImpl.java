@@ -9,7 +9,7 @@ import com.lt.crs.app.CRSProfessor;
 import com.lt.crs.app.CRSStudent;
 import com.lt.crs.utilsDB.DBUtils;
 
-public class LoginUserDAOImpl implements LoginUserDAO{
+public class LoginUserDAOImpl implements LoginUserDAOInterface{
 	
 	
 	DBUtils db=null;
@@ -101,7 +101,7 @@ public void userLogin(int userId,String userPassword) {
 
 			
 			
-			
+			System.out.println("Please Enter VALID CREDENTIALS");
 		}
 			catch(Exception e) {try {e.printStackTrace();ps.close();con.close();}catch(Exception e1) {e.printStackTrace();}	}
 	

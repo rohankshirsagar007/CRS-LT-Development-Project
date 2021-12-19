@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.Scanner;
 import com.lt.crs.utilsDB.DBUtils;
 
-public class AdminDAOImpl implements AdminDAO{
+public class AdminDAOImpl implements AdminDAOInterface{
 	DBUtils db=null;
 	Connection con=null;
 	PreparedStatement ps=null;
@@ -112,6 +112,15 @@ static Scanner sc=new Scanner(System.in);
 			// TODO Auto-generated method stub
 			int profId=sc.nextInt();
 			
+			ps=con.prepareStatement("select * from course_professor_student where professor_id=?");
+			ps.setInt(1,profId);
+			ResultSet rsp=ps.executeQuery();
+			if(rsp.next()) {
+				System.out.println("Sorry you cant remove the Professor who has been assigned to teach course");
+				
+			}
+			else {
+			
 			ps=con.prepareStatement("select professor_id  from professor where professor_id=?");
 			ps.setInt(1, profId);
 			ps.execute();
@@ -134,7 +143,7 @@ static Scanner sc=new Scanner(System.in);
 		
 			con.close();
 
-		
+		}
 			}
 			catch(Exception e) {try {e.printStackTrace();ps.close();con.close();}catch(Exception e1) {e.printStackTrace();}	}
 
@@ -206,6 +215,15 @@ static Scanner sc=new Scanner(System.in);
 			// TODO Auto-generated method stub
 			int studId=sc.nextInt();
 			
+			ps=con.prepareStatement("select * from course_professor_student where student_id=?");
+			ps.setInt(1,studId);
+			ResultSet rsp=ps.executeQuery();
+			if(rsp.next()) {
+				System.out.println("Sorry you cant remove the Student  who has been assigned to take the  course");
+				
+			}
+			else {
+			
 			ps=con.prepareStatement("select student_id  from student where student_id=?");
 			ps.setInt(1, studId);
 			ps.execute();
@@ -228,7 +246,7 @@ static Scanner sc=new Scanner(System.in);
 		
 			con.close();
 
-		
+			}		
 			}
 			catch(Exception e) {try {e.printStackTrace();ps.close();con.close();}catch(Exception e1) {e.printStackTrace();}	}
 
@@ -278,5 +296,83 @@ static Scanner sc=new Scanner(System.in);
 		
 		
 	
+	}
+
+	@Override
+	public void removeCourse() {
+		// TODO Auto-generated method stub
+		db=new DBUtils();
+		con=db.getConnection();
+	
+		try {
+			ps=con.prepareStatement("select course_id,professor_id,count(*) from course_professor_student group by 1,2");
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()) {
+				int coId=rs.getInt(1);
+				int profId=rs.getInt(2);
+				int count=rs.getInt(3);
+				if(count<3) {
+					System.out.println("Removing the course with students less than the desired student");
+					ps=con.prepareStatement("select * from course_professor_student where course_id=? and professor_id=?");
+					ps.setInt(1,coId);
+					ps.setInt(2,profId);
+					ResultSet rs1=ps.executeQuery();
+					System.out.println("Append all the corresponding students ID in the list "
+							+ "and send them notification regard choose of another course");
+					while(rs1.next()) {
+						
+						System.out.println("student ID: "+rs1.getInt(3));
+					}
+					//Delete Query
+					
+				}
+				
+				
+				
+				
+			}
+		
+			
+		}
+	
+		
+		
+		
+		catch(Exception e) {try {e.printStackTrace();ps.close();ps1.close();con.close();}catch(Exception e1) {e.printStackTrace();}	}
+
+
+		
+		
+		
+	}
+
+	@Override
+	public void reportCardGeneration() {
+		// TODO Auto-generated method stub
+
+		db=new DBUtils();
+		con=db.getConnection();
+		
+		try {
+		
+			ps=con.prepareStatement("  select c.course_id,c.course_name,s.student_name,sg.mark,sg.grade,s.student_id from student_grade sg inner join student s on sg.student_id=s.student_id inner join course c on sg.course_id=c.course_id group by 1,2,3,4,5,6 order by 6 ");
+
+			ResultSet rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				System.out.println("******************* Displaying report card for Student ID:" +rs.getInt(6)+" and Student Name :"+rs.getString(3)+"******************  ");
+			System.out.println("\t\t course ID        "+rs.getInt(1)+"\t\t\t Course Name      "+rs.getString(2)+"\t\t\t\tMark     "+rs.getDouble(4)+"\t\tGrade       "+rs.getString(5));
+			}
+			
+		
+			
+			
+			
+		}
+		catch(Exception e) {try {e.printStackTrace();ps.close();con.close();}catch(Exception e1) {e.printStackTrace();}	}
+
+
+		
+		
 	}
 }

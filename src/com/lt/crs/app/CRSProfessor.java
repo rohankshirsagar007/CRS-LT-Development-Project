@@ -2,14 +2,15 @@ package com.lt.crs.app;
 
 import java.util.Scanner;
 
-import com.lt.crs.service.ProfessorService;
+import com.lt.crs.business.ProfessorInterface;
+import com.lt.crs.business.ProfessorOperation;
 
 public class CRSProfessor {
 	static Scanner sc=new Scanner(System.in);
-	ProfessorService profser=null;
+	ProfessorInterface profser=null;
 	
 
-	public void profMenu(int studentId) {
+	public void profMenu(int profId) {
 		// TODO Auto-generated method stub
 		
 System.out.println("*********************Now you are in the Professor  MENU ************************");
@@ -21,10 +22,13 @@ System.out.println("*********************Now you are in the Professor  MENU ****
 		int profSelect=sc.nextInt();
 		switch(profSelect) {
 		case 1:
+			profser=new ProfessorOperation();
+			profser.viewStudent(profId);
 			
 			break;
 		case 2:
-			
+			profser=new ProfessorOperation();
+			profser.addGrade(profId);
 			break;
 		
 		case 3:

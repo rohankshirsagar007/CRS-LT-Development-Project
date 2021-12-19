@@ -2,12 +2,11 @@ package com.lt.crs.app;
 
 import java.util.Scanner;
 
-
-import com.lt.crs.model.Student;
-import com.lt.crs.service.LoginUserService;
-import com.lt.crs.service.LoginUserServiceImpl;
-import com.lt.crs.service.StudentRegistrationService;
-import com.lt.crs.service.StudentRegistrationServiceImpl;
+import com.lt.crs.bean.Student;
+import com.lt.crs.business.LoginUserInterface;
+import com.lt.crs.business.LoginUserOperation;
+import com.lt.crs.business.StudentRegistrationInterface;
+import com.lt.crs.business.StudentRegistrationOperation;
 
 public class CRSApplication {
 	
@@ -21,8 +20,8 @@ public class CRSApplication {
 
 	}
 	public static void mainMenu()  {
-		LoginUserService user=null;
-		StudentRegistrationService str=null;
+		LoginUserInterface user=null;
+		StudentRegistrationInterface str=null;
 		Student student=null;
 
 		Boolean mainMenu=true;
@@ -32,7 +31,7 @@ public class CRSApplication {
 		int menu=sc.nextInt();
 		switch(menu) {
 		case 1:
-			user=new LoginUserServiceImpl();
+			user=new LoginUserOperation();
 			System.out.println("Enter User ID : ");
 			int userId=sc.nextInt();
 			System.out.println("Enter password : ");
@@ -41,7 +40,7 @@ public class CRSApplication {
 		break;
 			
 		case 2:
-			str=new StudentRegistrationServiceImpl();
+			str=new StudentRegistrationOperation();
 			student=new Student();
 			System.out.println("Enter Student Name");
 			String studentName=sc.next();

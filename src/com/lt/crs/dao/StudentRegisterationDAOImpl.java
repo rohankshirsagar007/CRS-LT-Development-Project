@@ -5,10 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.lt.crs.model.Student;
+import com.lt.crs.bean.Student;
 import com.lt.crs.utilsDB.DBUtils;
 
-public class StudentRegisterationDAOImpl implements StudentRegisterationDAO{
+public class StudentRegisterationDAOImpl implements StudentRegisterationDAOInterface{
 	DBUtils db=null;
 	Connection con=null;
 	PreparedStatement ps=null;
